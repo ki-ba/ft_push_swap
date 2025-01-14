@@ -6,7 +6,7 @@
 /*   By: kbarru <kbarru@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 17:00:10 by kbarru            #+#    #+#             */
-/*   Updated: 2025/01/05 16:38:56 by kbarru           ###   ########lyon.fr   */
+/*   Updated: 2025/01/12 20:17:59 by kbarru           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ t_list  *ft_create_list(int  *content)
 {
     t_list  *lst;
     lst = malloc(sizeof(t_list));
-    lst->content = content;
+    if(content)
+        lst->content = content;
     lst->next = NULL;
     return (lst);
 }
@@ -51,14 +52,19 @@ t_list *ft_add_front(t_list **head, t_list *new)
     return (new);
 }
 
-void print_list(t_list **head)
+void ft_print_list(t_list **head)
 {
-    t_list *current = *head;
+    if (!head || !(*head))
+    {
+        ft_printf("[EMPTY LIST]\n");
+        return ;
+    }
+    t_list *current;
+    current = *head;
     while(current->next)
     {
-        printf("%d -> ", *(current->content));
-        current = current->next;
+        ft_printf("%d -> ", *(int *)(current->content));
+        current = (current->next);
     }
-    printf("%d\n", *(current->content));
-
+    ft_printf("%d\n", *(int *)(current->content));
 }

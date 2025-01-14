@@ -6,7 +6,7 @@
 /*   By: kbarru <kbarru@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 17:19:36 by kbarru            #+#    #+#             */
-/*   Updated: 2025/01/05 16:44:48 by kbarru           ###   ########lyon.fr   */
+/*   Updated: 2025/01/12 20:17:11 by kbarru           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int main(void)
 {
     t_list *list;
+    // t_list *list2;
 
     int *content1 = malloc(sizeof(int));
     int *content2 = malloc(sizeof(int));
@@ -33,23 +34,25 @@ int main(void)
     *content7 = 7;
 
     list = ft_create_list(content3);
-    t_list **head = &list;
+
+    t_list **head1 = &list;
+    t_list **head2 = NULL;
     
     ft_add_back(list, ft_create_list(content4));
     ft_add_back(list, ft_create_list(content5));
     ft_add_back(list, ft_create_list(content6));
     ft_add_back(list, ft_create_list(content7));
-    ft_add_front(head, ft_create_list(content2));
-    ft_add_front(head, ft_create_list(content1));
+    ft_add_front(head1, ft_create_list(content2));
+    ft_add_front(head1, ft_create_list(content1));
 
 
-    print_list(head);
+    ft_printf("Initial lists :\n");
+    ft_print_list(head1);
+    ft_print_list(head2);
 
-    for(int i = 0; i < 7; ++i)
-    {
-        printf("value of node %d is %d\n", i, *(get_node_by_index(*head, i)->content));
-    }
+    push_list(head1, &head2);
 
-    printf("Highest value is node #%d (value : %d)\n", get_highest_number_index(*head), *(get_node_by_index(*head, get_highest_number_index(*head)))->content);
-    return (0);
+    ft_printf("Final lists :\n");
+    ft_print_list(head1);
+    ft_print_list(head2);
 }
