@@ -6,7 +6,7 @@
 /*   By: kbarru <kbarru@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 17:53:37 by kbarru            #+#    #+#             */
-/*   Updated: 2025/01/08 12:59:41 by kbarru           ###   ########lyon.fr   */
+/*   Updated: 2025/01/15 15:38:48 by kbarru           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int get_highest_number_index(t_list *lst)
 
     current_node = lst;
     highest_number_index = 0;
-    
+
 
     while (current_node)
     {
@@ -36,7 +36,7 @@ t_list *get_node_by_index(t_list *lst, int index)
 {
     int i;
     t_list *current_node = lst;
-    
+
     i = 0;
     while (current_node->next && i < index)
     {

@@ -6,7 +6,7 @@
 /*   By: kbarru <kbarru@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 17:19:36 by kbarru            #+#    #+#             */
-/*   Updated: 2025/01/12 20:17:11 by kbarru           ###   ########lyon.fr   */
+/*   Updated: 2025/01/15 15:34:45 by kbarru           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,26 +33,48 @@ int main(void)
     *content6 = 6;
     *content7 = 7;
 
-    list = ft_create_list(content3);
+    list = ft_lstnew(content3);
 
     t_list **head1 = &list;
-    t_list **head2 = NULL;
-    
-    ft_add_back(list, ft_create_list(content4));
-    ft_add_back(list, ft_create_list(content5));
-    ft_add_back(list, ft_create_list(content6));
-    ft_add_back(list, ft_create_list(content7));
-    ft_add_front(head1, ft_create_list(content2));
-    ft_add_front(head1, ft_create_list(content1));
+    t_list *head2 = NULL;
+
+    ft_lstadd_back(head1, ft_lstnew(content4));
+    ft_lstadd_back(head1, ft_lstnew(content5));
+    ft_lstadd_back(head1, ft_lstnew(content6));
+    ft_lstadd_back(head1, ft_lstnew(content7));
+    ft_lstadd_front(head1, ft_lstnew(content2));
+    ft_lstadd_front(head1, ft_lstnew(content1));
 
 
     ft_printf("Initial lists :\n");
-    ft_print_list(head1);
-    ft_print_list(head2);
 
     push_list(head1, &head2);
+    ft_print_list(head1);
+    ft_print_list(&head2);
+    ft_printf("\n");
+
+    push_list(head1, &head2);
+    ft_print_list(head1);
+    ft_print_list(&head2);
+    ft_printf("\n");
+
+    push_list(head1, &head2);
+    ft_print_list(head1);
+    ft_print_list(&head2);
+    ft_printf("\n");
+
+    ft_rotate_list(head1);
+    ft_print_list(head1);
+    ft_print_list(&head2);
+    ft_printf("\n");
+
+    push_list(&head2, head1);
+    ft_print_list(head1);
+    ft_print_list(&head2);
+    ft_printf("\n");
+
 
     ft_printf("Final lists :\n");
     ft_print_list(head1);
-    ft_print_list(head2);
+    ft_print_list(&head2);
 }

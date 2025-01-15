@@ -6,7 +6,7 @@
 /*   By: kbarru <kbarru@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 10:26:48 by kbarru            #+#    #+#             */
-/*   Updated: 2025/01/12 18:51:47 by kbarru           ###   ########lyon.fr   */
+/*   Updated: 2025/01/15 15:25:40 by kbarru           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ t_list **switch_list(t_list **head)
 
     first_element->next = second_element->next;
     second_element->next = first_element;
-    
+
     *head = second_element;
 
     return (head);
 }
 
-t_list **push_list(t_list **head_from, t_list ***head_to)
+void push_list(t_list **head_from, t_list **head_to)
 {
     t_list *new_head_from = (*head_from)->next;
     t_list *new_list;
@@ -36,12 +36,42 @@ t_list **push_list(t_list **head_from, t_list ***head_to)
     if (!*head_to)
     {
         new_list = ft_lstnew((*head_from)->content);
-        *head_to = (t_list **)new_list;
-        (**head_to)->next = NULL;
+        (*head_to) = new_list;
+        (*head_to)->next = NULL;
     }
     else
-        ft_lstadd_front(*head_to, *head_from);
+        ft_lstadd_front(head_to, *head_from);
     *head_from = new_head_from;
+}
 
-    return (*head_to);
+void ft_rev_rotate_list(t_list **head)
+{
+    t_list *last;
+    t_list *old_first;
+    t_list *second_to_last;
+
+    last = ft_lstlast(*head);
+
+    second_to_last = lst_second_to_last(*head);
+    second_to_last->next = NULL;
+    lst_second_to_last(*head);
+
+    old_first = *head;
+
+    *head = last;
+    last->next = old_first;
+}
+
+void ft_rotate_list(t_list **head)
+{
+    t_list *second_element;
+    t_list *second_to_last;
+    t_list *last_element;
+
+    last_element = lst_last(*head);
+    second_element = (*head)->next;
+    second_to_last = lst_second_to_last(*head);
+    last_element->next = (*head);
+    (*head)->next = NULL;
+    *head = second_element;
 }
