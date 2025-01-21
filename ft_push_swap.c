@@ -6,75 +6,103 @@
 /*   By: kbarru <kbarru@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 17:19:36 by kbarru            #+#    #+#             */
-/*   Updated: 2025/01/15 15:34:45 by kbarru           ###   ########lyon.fr   */
+/*   Updated: 2025/01/21 16:56:51 by kbarru           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
-int main(void)
+static int	ft_issign(char c)
 {
-    t_list *list;
-    // t_list *list2;
+	return (c == '-' || c == '+');
+}
 
-    int *content1 = malloc(sizeof(int));
-    int *content2 = malloc(sizeof(int));
-    int *content3 = malloc(sizeof(int));
-    int *content4 = malloc(sizeof(int));
-    int *content5 = malloc(sizeof(int));
-    int *content6 = malloc(sizeof(int));
-    int *content7 = malloc(sizeof(int));
+void fail_parsing(t_list **head)
+{
+	ft_printf("Error\n");
+	ft_lstclear(head, free);
+	exit(EXIT_FAILURE);
+}
+int	ft_add_to_list(t_list **head, char *nptr)
+{
+	int	invert;
+	int	*number;
 
-    *content1 = 1;
-    *content2 = 2;
-    *content3 = 3;
-    *content4 = 4;
-    *content5 = 55;
-    *content6 = 6;
-    *content7 = 7;
+	number = malloc(sizeof(int));
+	*number = 0;
+	invert = -1;
+	if (ft_issign(*nptr))
+	{
+		if (*nptr == '-')
+			invert *= (-1);
+		++nptr;
+	}
+	while (ft_isdigit(*nptr))
+	{
+		if (*number < INT_MIN / 10 || (*number == INT_MIN / 10 && (*nptr
+					- '0') > -(INT_MIN % 10)))
+			fail_parsing(head);
+		*number = (*number * 10) - (*nptr - '0');
+		++nptr;
+	}
+	if (*number == INT_MIN && invert == -1)
+		fail_parsing(head);
+	*number = invert * (*number);
+	if (get_node_by_value(*head, *number))
+		fail_parsing(head);
+	ft_lstadd_back(head, ft_lstnew(number));
+	return (invert * (int)(*number));
+}
+int ft_is_int(char *nbr)
+{
+	size_t	i;
 
-    list = ft_lstnew(content3);
+	i = 0;
+	if (ft_issign(nbr[i]))
+		++i;
+	while(nbr[i])
+	{
+		if (!ft_isdigit(nbr[i]))
+			return (0);
+		++i;
+	}
+	return (1);
+}
+void	check_input(char **input)
+{
+	size_t	i;
 
-    t_list **head1 = &list;
-    t_list *head2 = NULL;
+	i = 1;
+	while (input[i])
+	{
+		if (!ft_is_int(input[i]))
+		{
+			ft_printf("Error\n");
+			exit(EXIT_FAILURE);
+		}
+		++i;
+	}
+}
+int	main(int argc, char **argv)
+{
+	t_list	*list_a;
+	t_list	*list_b;
 
-    ft_lstadd_back(head1, ft_lstnew(content4));
-    ft_lstadd_back(head1, ft_lstnew(content5));
-    ft_lstadd_back(head1, ft_lstnew(content6));
-    ft_lstadd_back(head1, ft_lstnew(content7));
-    ft_lstadd_front(head1, ft_lstnew(content2));
-    ft_lstadd_front(head1, ft_lstnew(content1));
+	int	i;
 
+	i = 1;
+	list_a = NULL;
+	list_b = NULL;
+	if (argc == 1)
+		return (1);
+	check_input(argv);
+	while (i < argc)
+	{
+		ft_add_to_list(&list_a, argv[i]);
+		++i;
+	}
 
-    ft_printf("Initial lists :\n");
+	ft_radix_sort(&list_a, &list_b);
 
-    push_list(head1, &head2);
-    ft_print_list(head1);
-    ft_print_list(&head2);
-    ft_printf("\n");
-
-    push_list(head1, &head2);
-    ft_print_list(head1);
-    ft_print_list(&head2);
-    ft_printf("\n");
-
-    push_list(head1, &head2);
-    ft_print_list(head1);
-    ft_print_list(&head2);
-    ft_printf("\n");
-
-    ft_rotate_list(head1);
-    ft_print_list(head1);
-    ft_print_list(&head2);
-    ft_printf("\n");
-
-    push_list(&head2, head1);
-    ft_print_list(head1);
-    ft_print_list(&head2);
-    ft_printf("\n");
-
-
-    ft_printf("Final lists :\n");
-    ft_print_list(head1);
-    ft_print_list(&head2);
+	ft_print_list(&list_a);
 }

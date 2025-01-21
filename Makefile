@@ -4,7 +4,7 @@ FLAGS = -Werror -Wall -Wextra -g
 
 P_LIB = libft/
 P_OBJ = .obj/
-SRC = ft_lst_utils.c ft_push_swap.c ft_sorting_utils.c ft_sorting_operations.c
+SRC = ft_lst_utils.c ft_push_swap.c ft_sorting_utils.c ft_sorting_operations.c ft_radix_sort.c
 OBJ = $(addprefix $(P_OBJ), $(SRC:%.c=%.o))
 
 .PHONY = all clean fclean re

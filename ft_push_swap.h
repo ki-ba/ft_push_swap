@@ -6,7 +6,7 @@
 /*   By: kbarru <kbarru@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 17:00:25 by kbarru            #+#    #+#             */
-/*   Updated: 2025/01/15 15:35:18 by kbarru           ###   ########lyon.fr   */
+/*   Updated: 2025/01/21 16:32:13 by kbarru           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stddef.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include <limits.h>
 
 //LST UTILS
 t_list *lst_last(t_list *list);
@@ -28,21 +29,20 @@ t_list *lst_second_to_last(t_list *list);
 int get_highest_number_index(t_list *lst);
 t_list *get_node_by_index(t_list *lst, int index);
 int get_node_index(t_list *lst, t_list *node);
+t_list	*get_node_by_value(t_list *lst, int number);
 
 
 // SORTING BASIC OPERATIONS
 
-t_list **switch_list(t_list **head);
-void push_list(t_list **head_from, t_list **head_to);
-void ft_rotate_list(t_list **head);
+t_list **ft_switch_list(t_list **head, char *order);
+void ft_push_list(t_list **head_from, t_list **head_to, char *order);
+void ft_rotate_list(t_list **head, char *order);
+void ft_rev_rotate_list(t_list **head, char *order);
 
-/*
-ss
-ra
-rb
-rr
-rra
-rrb
-rrr
-*/
+// FT_RADIX_SORT.C
+
+int ft_get_sd_from_node(t_list *list, int pos);
+int ft_nb_nodes_with_sd(t_list **head, int sd, int sd_position);
+void	ft_radix_sort(t_list **list_a, t_list **list_b);
+
 #endif
