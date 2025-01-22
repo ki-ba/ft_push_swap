@@ -6,7 +6,7 @@
 /*   By: kbarru <kbarru@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 17:53:37 by kbarru            #+#    #+#             */
-/*   Updated: 2025/01/21 16:31:22 by kbarru           ###   ########lyon.fr   */
+/*   Updated: 2025/01/22 15:07:49 by kbarru           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,4 +77,42 @@ t_list	*get_node_by_value(t_list *lst, int number)
 		current_node = current_node->next;
 	}
 	return (NULL);
+}
+
+int is_sorted(t_list **lst)
+{
+	t_list	*current;
+	int		last_number;
+	current = *lst;
+
+	last_number = *(int *)current->content;
+	current = current->next;
+	while (current)
+	{
+		if (*(int *)current->content <= last_number)
+			return (0);
+		last_number = *(int *)current->content;
+		current = current->next;
+	}
+	return (1);
+}
+
+int	is_sorted_rotated(t_list **list)
+{
+	t_list *current;
+	int		minimum;
+	int		last;
+
+	minimum = ft_get_minimum(list);
+	current = *list;
+	last = get_value(current);
+	current = current->next;
+	while (current)
+	{
+		if (get_value(current) <= last && get_value(current) != minimum)
+			return (0);
+		last = get_value(current);
+		current = current->next;
+	}
+	return (1);
 }

@@ -31,3 +31,9 @@ fclean: clean
 	rm -f $(NAME)
 
 re: clean all
+
+# DEBUG
+
+view: all
+	cd push_swap_visualizer/build
+	.bin/visualizer

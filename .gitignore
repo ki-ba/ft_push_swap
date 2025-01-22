@@ -2,3 +2,10 @@
 *.out
 libft/*
 .vscode
+complexity
+checker_linux
+push_swap
+push_swap_visualizer/
+testerpushswap/
+imgui.ini
+.obj/

@@ -6,7 +6,7 @@
 /*   By: kbarru <kbarru@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 10:26:48 by kbarru            #+#    #+#             */
-/*   Updated: 2025/01/21 08:27:25 by kbarru           ###   ########lyon.fr   */
+/*   Updated: 2025/01/22 13:10:06 by kbarru           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,19 @@ void	ft_rev_rotate_list(t_list **head, char *order)
 	t_list	*old_first;
 	t_list	*second_to_last;
 
+
+	static int i = 0;
+	++i;
+	// if (i > 20000)
+	// 	exit(EXIT_FAILURE);
+	if (!(*head))
+		return ;
 	last = ft_lstlast(*head);
 	second_to_last = lst_second_to_last(*head);
-	second_to_last->next = NULL;
-	lst_second_to_last(*head);
 	old_first = *head;
+	if (last == old_first)
+		return ;
+	second_to_last->next = NULL;
 	*head = last;
 	last->next = old_first;
 	if (ft_strlen(order))
@@ -65,13 +73,18 @@ void	ft_rev_rotate_list(t_list **head, char *order)
 
 void	ft_rotate_list(t_list **head, char *order)
 {
+	static int i = 0;
 	t_list	*second_element;
-	t_list	*second_to_last;
 	t_list	*last_element;
-
+	++i;
+	// if (i > 2000)
+	// 	exit(EXIT_FAILURE);
+	if (!(*head))
+		return ;
 	last_element = lst_last(*head);
 	second_element = (*head)->next;
-	second_to_last = lst_second_to_last(*head);
+	if (last_element == *head)
+		return ;
 	last_element->next = (*head);
 	(*head)->next = NULL;
 	*head = second_element;
