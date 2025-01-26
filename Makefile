@@ -1,6 +1,7 @@
 NAME = push_swap
 CC = cc
-FLAGS = -Werror -Wall -Wextra -g
+FLAGS = -Wall -Wextra -Werror
+DEBUG_FLAGS = -Wall -Wextra -g -fsanitize=address
 
 P_LIB = libft/
 P_OBJ = .obj/
@@ -15,6 +16,7 @@ $(NAME): $(OBJ) $(P_LIB)libft.a
 	$(CC) $(FLAGS) $(OBJ) -Llibft -lft -o $(NAME)
 
 $(P_OBJ)%.o: %.c | $(P_OBJ)
+	mkdir -p $(P_OBJ)
 	$(CC) $(FLAGS) -I libft -c $< -o $@
 
 $(P_OBJ):
@@ -37,3 +39,6 @@ re: clean all
 view: all
 	cd push_swap_visualizer/build
 	.bin/visualizer
+
+debug: 
+	make FLAGS="$(DEBUG_FLAGS)"

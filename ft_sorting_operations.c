@@ -6,13 +6,13 @@
 /*   By: kbarru <kbarru@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 10:26:48 by kbarru            #+#    #+#             */
-/*   Updated: 2025/01/22 13:10:06 by kbarru           ###   ########lyon.fr   */
+/*   Updated: 2025/01/26 19:33:31 by kbarru           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
-t_list	**ft_switch_list(t_list **head, char *order)
+void	ft_switch_list(t_list **head, char list_id)
 {
 	t_list	*first_element;
 	t_list	*second_element;
@@ -22,12 +22,10 @@ t_list	**ft_switch_list(t_list **head, char *order)
 	first_element->next = second_element->next;
 	second_element->next = first_element;
 	*head = second_element;
-	return (head);
-	if (ft_strlen(order))
-		ft_printf("%s", order);
+	ft_printf("s%c\n", list_id);
 }
 
-void	ft_push_list(t_list **head_from, t_list **head_to, char *order)
+void	ft_push_list(t_list **head_from, t_list **head_to, char list_id)
 {
 	t_list	*new_head_from;
 	t_list	*new_list;
@@ -42,21 +40,15 @@ void	ft_push_list(t_list **head_from, t_list **head_to, char *order)
 	else
 		ft_lstadd_front(head_to, *head_from);
 	*head_from = new_head_from;
-	if (ft_strlen(order))
-		ft_printf("%s", order);
+	ft_printf("p%c\n", list_id);
 }
 
-void	ft_rev_rotate_list(t_list **head, char *order)
+void	ft_rev_rotate_list(t_list **head, char list_id)
 {
 	t_list	*last;
 	t_list	*old_first;
 	t_list	*second_to_last;
 
-
-	static int i = 0;
-	++i;
-	// if (i > 20000)
-	// 	exit(EXIT_FAILURE);
 	if (!(*head))
 		return ;
 	last = ft_lstlast(*head);
@@ -67,18 +59,14 @@ void	ft_rev_rotate_list(t_list **head, char *order)
 	second_to_last->next = NULL;
 	*head = last;
 	last->next = old_first;
-	if (ft_strlen(order))
-		ft_printf("%s", order);
+	ft_printf("rr%c\n", list_id);
 }
 
-void	ft_rotate_list(t_list **head, char *order)
+void	ft_rotate_list(t_list **head, char list_id)
 {
-	static int i = 0;
 	t_list	*second_element;
 	t_list	*last_element;
-	++i;
-	// if (i > 2000)
-	// 	exit(EXIT_FAILURE);
+
 	if (!(*head))
 		return ;
 	last_element = lst_last(*head);
@@ -88,6 +76,5 @@ void	ft_rotate_list(t_list **head, char *order)
 	last_element->next = (*head);
 	(*head)->next = NULL;
 	*head = second_element;
-	if (ft_strlen(order))
-		ft_printf("%s", order);
+	ft_printf("r%c\n", list_id);
 }

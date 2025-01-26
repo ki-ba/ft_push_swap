@@ -6,7 +6,7 @@
 /*   By: kbarru <kbarru@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 17:53:37 by kbarru            #+#    #+#             */
-/*   Updated: 2025/01/22 15:07:49 by kbarru           ###   ########lyon.fr   */
+/*   Updated: 2025/01/26 21:28:27 by kbarru           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,26 +65,25 @@ int	get_node_index(t_list *lst, t_list *node)
 
 t_list	*get_node_by_value(t_list *lst, int number)
 {
-	int		i;
 	t_list	*current_node;
 
 	current_node = lst;
-	i = 0;
-	while (current_node )
+	while (current_node)
 	{
-        if (*(int *)(current_node->content) == number)
-            return (current_node);
+		if (*(int *)(current_node->content) == number)
+			return (current_node);
 		current_node = current_node->next;
 	}
 	return (NULL);
 }
 
-int is_sorted(t_list **lst)
+// FIXME : segfault on empty list
+int	is_sorted(t_list **lst)
 {
 	t_list	*current;
 	int		last_number;
-	current = *lst;
 
+	current = *lst;
 	last_number = *(int *)current->content;
 	current = current->next;
 	while (current)
@@ -99,7 +98,7 @@ int is_sorted(t_list **lst)
 
 int	is_sorted_rotated(t_list **list)
 {
-	t_list *current;
+	t_list	*current;
 	int		minimum;
 	int		last;
 
