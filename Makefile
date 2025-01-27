@@ -13,6 +13,7 @@ OBJ = $(addprefix $(P_OBJ), $(SRC:%.c=%.o))
 all: $(NAME)
 
 $(NAME): $(OBJ) $(P_LIB)libft.a
+	$(MAKE) -C (P_LIB)
 	$(CC) $(FLAGS) $(OBJ) -Llibft -lft -o $(NAME)
 
 $(P_OBJ)%.o: %.c | $(P_OBJ)
