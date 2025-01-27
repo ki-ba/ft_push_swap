@@ -13,10 +13,10 @@ OBJ = $(addprefix $(P_OBJ), $(SRC:%.c=%.o))
 all: $(NAME)
 
 $(NAME): $(OBJ) $(P_LIB)libft.a
-	$(MAKE) -C (P_LIB)
+	$(MAKE) -C $(P_LIB)
 	$(CC) $(FLAGS) $(OBJ) -Llibft -lft -o $(NAME)
 
-$(P_OBJ)%.o: %.c | $(P_OBJ)
+$(P_OBJ)%.o: %.c
 	mkdir -p $(P_OBJ)
 	$(CC) $(FLAGS) -I libft -c $< -o $@
 
@@ -42,4 +42,4 @@ view: all
 	.bin/visualizer
 
 debug: 
-	make FLAGS="$(DEBUG_FLAGS)"
+	make re FLAGS="$(DEBUG_FLAGS)"
