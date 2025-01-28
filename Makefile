@@ -1,6 +1,6 @@
 NAME = push_swap
 CC = cc
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -g
 DEBUG_FLAGS = -Wall -Wextra -g -fsanitize=address
 
 P_LIB = libft/
@@ -41,5 +41,5 @@ view: all
 	cd push_swap_visualizer/build
 	.bin/visualizer
 
-debug: 
+debug:
 	make re FLAGS="$(DEBUG_FLAGS)"

@@ -6,12 +6,13 @@
 /*   By: kbarru <kbarru@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 17:00:25 by kbarru            #+#    #+#             */
-/*   Updated: 2025/01/26 19:34:43 by kbarru           ###   ########lyon.fr   */
+/*   Updated: 2025/01/28 11:35:47 by kbarru           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PUSH_SWAP_H
 # define FT_PUSH_SWAP_H
+# define RADIX 10
 
 # include "libft.h"
 # include <stddef.h>
