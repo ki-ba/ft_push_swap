@@ -6,7 +6,7 @@
 /*   By: kbarru <kbarru@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 17:19:36 by kbarru            #+#    #+#             */
-/*   Updated: 2025/01/28 12:01:54 by kbarru           ###   ########lyon.fr   */
+/*   Updated: 2025/01/28 15:04:17 by kbarru           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,12 +100,13 @@ int	main(int argc, char **argv)
 		ft_add_to_list(&list_a, argv[i]);
 		++i;
 	}
+	ft_print_lists_status(&list_a, &list_b);
 	int success = ft_radix_sort(&list_a, &list_b);
 	(void)success;
 	if (success)
 		ft_printf("\n\n\033[0;32mSORT SUCCESSFUL : \033[0m\n");
 	else
-		ft_printf("\033[0;31mSORT FAILED : \033[0m\n");
+		ft_printf("\n\n\033[0;31mSORT FAILED : \033[0m\n");
 	ft_print_lists_status(&list_a, &list_b);
 	ft_lstclear(&list_a, free);
 	ft_lstclear(&list_b, free);

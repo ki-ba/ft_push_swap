@@ -6,7 +6,7 @@
 /*   By: kbarru <kbarru@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 17:00:10 by kbarru            #+#    #+#             */
-/*   Updated: 2025/01/22 15:31:05 by kbarru           ###   ########lyon.fr   */
+/*   Updated: 2025/01/28 13:28:06 by kbarru           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,31 @@ void	ft_print_list(t_list **head)
 	current = *head;
 	while (current->next)
 	{
-		ft_printf("%d -> ", *(int *)(current->content));
+		ft_printf("%d -> ",*(int *)(current->content));
 		current = (current->next);
 	}
 	ft_printf("%d\n", *(int *)(current->content));
 }
 
+void	ft_print_list_bin(t_list **head)
+{
+	t_list	*current;
+
+	if (!head || !(*head))
+	{
+		ft_printf("[EMPTY LIST]\n");
+		return ;
+	}
+	current = *head;
+	while (current->next)
+	{
+		decToBinary(*(int *)(current->content));
+		ft_printf("-> ");
+		current = (current->next);
+	}
+	decToBinary(*(int *)(current->content));
+	ft_printf("\n");
+}
 int get_value(t_list *list)
 {
 	return (*(int *)list->content);
