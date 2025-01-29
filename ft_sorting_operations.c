@@ -6,66 +6,45 @@
 /*   By: kbarru <kbarru@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 10:26:48 by kbarru            #+#    #+#             */
-/*   Updated: 2025/01/27 23:46:46 by kbarru           ###   ########lyon.fr   */
+/*   Updated: 2025/01/29 14:27:10 by kbarru           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
-void	ft_switch_list(t_list **head, char list_id)
+/*
+	@brief rotate a: ake the first element at the top of `head_from`
+	@brief and put it at the top of `head_to`.
+	@param head_from the stack to push from.
+	@param head_to the stack to push to.
+	@param stack_id the name of the stack to push to ('a' or 'b').
+*/
+void	ft_push_stack(t_stack **head_from, t_stack **head_to, char stack_id)
 {
-	t_list	*first_element;
-	t_list	*second_element;
-
-	first_element = *head;
-	second_element = first_element->next;
-	first_element->next = second_element->next;
-	second_element->next = first_element;
-	*head = second_element;
-	ft_printf("s%c\n", list_id);
-}
-
-void	ft_push_list(t_list **head_from, t_list **head_to, char list_id)
-{
-	t_list	*new_head_from;
-	t_list	*new_list;
+	t_stack	*new_head_from;
 
 	new_head_from = (*head_from)->next;
 	if (!*head_to)
 	{
-		new_list = ft_lstnew((*head_from)->content);
-		(*head_to) = new_list;
+		*head_to = *head_from;
 		(*head_to)->next = NULL;
 	}
 	else
-		ft_lstadd_front(head_to, *head_from);
+		ft_stack_add_front(head_to, *head_from);
 	*head_from = new_head_from;
-	ft_printf("p%c\n", list_id);
+	ft_printf("p%c\n", stack_id);
 }
 
-void	ft_rev_rotate_list(t_list **head, char list_id)
+/*
+	@brief rotate a: Shift up all elements of stack a by 1.
+	@brief The first element becomes the last one.
+	@param head the stack to rotate.
+	@param the name of the stack to rotate ('a' or 'b').
+*/
+void	ft_rotate_stack(t_stack **head, char stack_id)
 {
-	t_list	*last;
-	t_list	*old_first;
-	t_list	*second_to_last;
-
-	if (!(*head))
-		return ;
-	last = ft_lstlast(*head);
-	second_to_last = lst_second_to_last(*head);
-	old_first = *head;
-	if (last == old_first)
-		return ;
-	second_to_last->next = NULL;
-	*head = last;
-	last->next = old_first;
-	ft_printf("rr%c\n", list_id);
-}
-
-void	ft_rotate_list(t_list **head, char list_id)
-{
-	t_list	*second_element;
-	t_list	*last_element;
+	t_stack	*second_element;
+	t_stack	*last_element;
 
 	if (!(*head))
 		return ;
@@ -76,5 +55,5 @@ void	ft_rotate_list(t_list **head, char list_id)
 	last_element->next = (*head);
 	(*head)->next = NULL;
 	*head = second_element;
-	ft_printf("r%c\n", list_id);
+	ft_printf("r%c\n", stack_id);
 }

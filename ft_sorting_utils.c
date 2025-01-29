@@ -6,37 +6,48 @@
 /*   By: kbarru <kbarru@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 17:53:37 by kbarru            #+#    #+#             */
-/*   Updated: 2025/01/26 21:28:27 by kbarru           ###   ########lyon.fr   */
+/*   Updated: 2025/01/29 14:35:44 by kbarru           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
-int	get_highest_number_index(t_list *lst)
+/*
+	@brief returns the index of the node with the highest value.
+	@param stack the stack to look in.
+	@returns the index of the highest-value node.
+*/
+int	get_highest_number_index(t_stack *stack)
 {
 	int		highest_number_index;
-	t_list	*current_node;
+	t_stack	*current_node;
 
-	current_node = lst;
+	current_node = stack;
 	highest_number_index = 0;
 	while (current_node)
 	{
-		if (*(int *)(current_node->content) > *(int *)(get_node_by_index(lst,
-					highest_number_index)->content))
+		if ((current_node->value) > (get_node_by_index(stack,
+					highest_number_index)->value))
 		{
-			highest_number_index = get_node_index(lst, current_node);
+			highest_number_index = get_node_index(stack, current_node);
 		}
 		current_node = current_node->next;
 	}
 	return (highest_number_index);
 }
 
-t_list	*get_node_by_index(t_list *lst, int index)
+/*
+	@brief returns the node with the index given as parameter.
+	@param stack the stack to look in.
+	@param index the index of the wanted node.
+	@returns the index of the highest-value node.
+*/
+t_stack	*get_node_by_index(t_stack *stack, int index)
 {
 	int		i;
-	t_list	*current_node;
+	t_stack	*current_node;
 
-	current_node = lst;
+	current_node = stack;
 	i = 0;
 	while (current_node->next && i < index)
 	{
@@ -46,12 +57,18 @@ t_list	*get_node_by_index(t_list *lst, int index)
 	return (current_node);
 }
 
-int	get_node_index(t_list *lst, t_list *node)
+/*
+	@brief returns the index of the node given as parameter.
+	@param stack the stack to look in.
+	@param node the node to look for.
+	@returns the index of `node` in `stack`.
+*/
+int	get_node_index(t_stack *stack, t_stack *node)
 {
-	t_list	*current_node;
+	t_stack	*current_node;
 	int		index;
 
-	current_node = lst;
+	current_node = stack;
 	index = 0;
 	while (current_node != node)
 	{
@@ -63,54 +80,48 @@ int	get_node_index(t_list *lst, t_list *node)
 	return (index);
 }
 
-t_list	*get_node_by_value(t_list *lst, int number)
+/*
+	@brief returns the first node of the stack with value equal to
+	@brief `number`.
+	@param stack the stack to look in.
+	@param number the wanted value for the node.
+	@returns the first node with value `number`.
+*/
+t_stack	*get_node_by_value(t_stack *stack, int number)
 {
-	t_list	*current_node;
+	t_stack	*current_node;
 
-	current_node = lst;
+	current_node = stack;
 	while (current_node)
 	{
-		if (*(int *)(current_node->content) == number)
+		if ((current_node->value) == number)
 			return (current_node);
 		current_node = current_node->next;
 	}
 	return (NULL);
 }
 
-// FIXME : segfault on empty list
-int	is_sorted(t_list **lst)
+/*
+	@brief returns 1 if `stack` is "sorted", i.e each element
+	@brief is _strictly_ inferior to the one after.
+	@param stack the stack to inspect.
+	@returns 1 if the list is sorted, 0 otherwise.
+*/
+int	is_sorted(t_stack **stack)
 {
-	t_list	*current;
+	t_stack	*current;
 	int		last_number;
 
-	current = *lst;
-	last_number = *(int *)current->content;
+	if (!stack)
+		return (1);
+	current = *stack;
+	last_number = current->value;
 	current = current->next;
 	while (current)
 	{
-		if (*(int *)current->content <= last_number)
+		if (current->value <= last_number)
 			return (0);
-		last_number = *(int *)current->content;
-		current = current->next;
-	}
-	return (1);
-}
-
-int	is_sorted_rotated(t_list **list)
-{
-	t_list	*current;
-	int		minimum;
-	int		last;
-
-	minimum = ft_get_minimum(list);
-	current = *list;
-	last = get_value(current);
-	current = current->next;
-	while (current)
-	{
-		if (get_value(current) <= last && get_value(current) != minimum)
-			return (0);
-		last = get_value(current);
+		last_number = current->value;
 		current = current->next;
 	}
 	return (1);

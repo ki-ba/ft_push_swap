@@ -1,6 +1,7 @@
 *.gch
 *.out
 libft/*
+libft/
 .vscode
 complexity
 checker_linux
