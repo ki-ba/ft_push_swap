@@ -6,7 +6,7 @@
 /*   By: kbarru <kbarru@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 15:30:29 by kbarru            #+#    #+#             */
-/*   Updated: 2025/01/07 23:52:50 by kbarru           ###   ########lyon.fr   */
+/*   Updated: 2025/01/29 16:05:23 by kbarru           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ static int	handle_integer_arg(va_list *args, char f_spec)
 	}
 	return (0);
 }
-
 
 static int	ft_put_str_arg(char *arg)
 {

@@ -6,7 +6,7 @@
 /*   By: kbarru <kbarru@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:06:45 by kbarru            #+#    #+#             */
-/*   Updated: 2025/01/27 23:21:29 by kbarru           ###   ########lyon.fr   */
+/*   Updated: 2025/01/29 16:04:33 by kbarru           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 # include <stdarg.h>
 # include <stdio.h>
 # include <unistd.h>
-
 
 # define HEX_BASE_LOWER "0123456789abcdef"
 # define HEX_BASE_UPPER "0123456789ABCDEF"
