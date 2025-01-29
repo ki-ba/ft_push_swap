@@ -5,6 +5,7 @@ DEBUG_FLAGS = -Wall -Wextra -g -fsanitize=address
 
 P_LIB = libft/
 P_OBJ = .obj/
+P_SRC = src/
 SRC = ft_stack_utils.c ft_push_swap.c ft_sorting_utils.c ft_sorting_operations.c \
 ft_parse_input.c ft_radix_sort.c ft_stack.c ft_simplify_stack.c
 
@@ -18,7 +19,7 @@ $(NAME): $(OBJ) $(P_LIB)libft.a
 	$(MAKE) -C $(P_LIB)
 	$(CC) $(FLAGS) $(OBJ) -Llibft -lft -o $(NAME)
 
-$(P_OBJ)%.o: %.c
+$(P_OBJ)%.o: $(P_SRC)%.c
 	mkdir -p $(P_OBJ)
 	$(CC) $(FLAGS) -I libft -c $< -o $@
 
