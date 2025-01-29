@@ -7,6 +7,7 @@ complexity
 checker_linux
 push_swap
 push_swap_visualizer/
+push_swap_tester
 testerpushswap/
 imgui.ini
 .obj/
