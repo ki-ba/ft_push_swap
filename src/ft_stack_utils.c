@@ -6,7 +6,7 @@
 /*   By: kbarru <kbarru@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 17:00:10 by kbarru            #+#    #+#             */
-/*   Updated: 2025/01/29 14:36:45 by kbarru           ###   ########lyon.fr   */
+/*   Updated: 2025/01/29 18:20:04 by kbarru           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	ft_print_stack(t_stack **head)
 	current = *head;
 	while (current)
 	{
-		ft_printf("%d -> ", (current->simpl_val));
+		ft_printf("%d -> ", (current->value));
 		current = (current->next);
 	}
 	ft_printf("NULL\n");

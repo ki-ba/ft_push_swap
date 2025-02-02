@@ -6,7 +6,7 @@
 /*   By: kbarru <kbarru@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 17:53:37 by kbarru            #+#    #+#             */
-/*   Updated: 2025/01/29 14:35:44 by kbarru           ###   ########lyon.fr   */
+/*   Updated: 2025/02/02 12:37:44 by kbarru           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ int	is_sorted(t_stack **stack)
 	t_stack	*current;
 	int		last_number;
 
-	if (!stack)
+	if (!stack ||!(*stack))
 		return (1);
 	current = *stack;
 	last_number = current->value;
