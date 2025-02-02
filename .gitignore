@@ -3,6 +3,7 @@
 .vscode
 complexity
 checker_linux
+checker_mac
 push_swap
 push_swap_visualizer/
 push_swap_tester
@@ -10,3 +11,5 @@ testerpushswap/
 imgui.ini
 .obj/
 gen_arg.py
+libft
+.DS_Store
