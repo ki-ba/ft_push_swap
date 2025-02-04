@@ -1,6 +1,6 @@
 NAME = push_swap
 CC = cc
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -g
 DEBUG_FLAGS = -Wall -Wextra -g
 P_LIB = libft/
 P_OBJ = .obj/

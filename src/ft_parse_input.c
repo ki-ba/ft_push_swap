@@ -6,7 +6,7 @@
 /*   By: kbarru <kbarru@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 13:37:37 by kbarru            #+#    #+#             */
-/*   Updated: 2025/01/29 14:21:39 by kbarru           ###   ########lyon.fr   */
+/*   Updated: 2025/02/04 13:23:37 by kbarru           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,11 @@
 	@param stack_a first stack to clear
 	@param stack_b second stack to clear
 */
-void	ft_clean_exit(t_stack **stack_a, t_stack **stack_b)
+void	ft_clean_exit(t_stack **stack_a, t_stack **stack_b, char **input,
+		char **argv)
 {
 	ft_printf("Error\n");
+	ft_clean_input(input, argv);
 	ft_clearstack(stack_a);
 	ft_clearstack(stack_b);
 	exit(EXIT_FAILURE);
@@ -63,20 +65,20 @@ int	ft_str_to_int(char *nptr, int *errno)
  *	@brief in the list, properly exit.
  *	@param head the list to add the number to.
  */
-void	ft_add_to_stack(t_stack **head, char *nptr)
+void	ft_add_to_stack(t_stack **head, char **input, int i, char **argv)
 {
 	int		errno;
 	int		number;
 	t_stack	*node;
 
 	errno = 0;
-	number = ft_str_to_int(nptr, &errno);
+	number = ft_str_to_int(input[i], &errno);
 	if (errno || get_node_by_value(*head, number))
-		ft_clean_exit(head, NULL);
+		ft_clean_exit(head, NULL, input, argv);
 	node = ft_create_node(number);
 	ft_stack_add_back(head, node);
 	if (ft_stack_last(head) != node)
-		ft_clean_exit(head, NULL);
+		ft_clean_exit(head, NULL, input, argv);
 }
 
 /*
@@ -105,12 +107,14 @@ int	ft_is_number(char *nbr)
  * @brief checks if every argument is a number. If not, prints Error and exits.
  * @param input the array of arguments.
  */
-void	check_input(char **input)
+void	check_input(char **input, char **argv)
 {
 	size_t	i;
 
 	i = 0;
+	if (!input)
+		ft_clean_exit(NULL, NULL, input, argv);
 	while (input[++i])
 		if (!ft_is_number(input[i]))
-			ft_clean_exit(NULL, NULL);
+			ft_clean_exit(NULL, NULL, input, argv);
 }

@@ -6,11 +6,23 @@
 /*   By: kbarru <kbarru@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 17:19:36 by kbarru            #+#    #+#             */
-/*   Updated: 2025/02/02 12:48:22 by kbarru           ###   ########lyon.fr   */
+/*   Updated: 2025/02/04 13:08:55 by kbarru           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
+
+void	ft_clean_input(char **input, char **argv)
+{
+	int	i;
+
+	i = -1;
+	if (input == argv)
+		return ;
+	while (input[++i])
+		free(input[i]);
+	free(input);
+}
 
 int	main(int argc, char **argv)
 {
@@ -29,10 +41,11 @@ int	main(int argc, char **argv)
 		input = argv;
 	else
 		input = ft_split((const char *)argv[1], ' ');
-	check_input(input);
+	check_input(input, argv);
 	while (input[i] && input[i] != argv[0])
-		ft_add_to_stack(&stack_a, input[i++]);
+		ft_add_to_stack(&stack_a, input, (i++), argv);
 	ft_stack_iter(&stack_a, ft_simplify_node);
+	ft_clean_input(input, argv);
 	success = ft_radix_sort(&stack_a, &stack_b);
 	ft_clearstack(&stack_a);
 	ft_clearstack(&stack_b);
