@@ -19,9 +19,11 @@ $(NAME): $(OBJ) $(P_LIB)libft.a
 	$(MAKE) -C $(P_LIB)
 	$(CC) $(FLAGS) $(OBJ) -Llibft -lft -o $(NAME)
 
-$(P_OBJ)%.o: $(P_SRC)%.c Makefile $(HEADERS)
-	mkdir -p $(P_OBJ)
+$(P_OBJ)%.o: $(P_SRC)%.c Makefile $(HEADERS) | $(P_OBJ)
 	$(CC) $(FLAGS) -I libft -c $< -o $@
+
+$(P_OBJ):
+	mkdir -p $(P_OBJ)
 
 $(P_LIB)libft.a:
 	$(MAKE) -C $(P_LIB)
