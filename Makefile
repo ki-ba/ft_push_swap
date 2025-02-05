@@ -11,12 +11,11 @@ ft_parse_input.c ft_radix_sort.c ft_stack.c ft_simplify_stack.c
 
 OBJ = $(addprefix $(P_OBJ), $(SRC:%.c=%.o))
 
-.PHONY = all clean fclean re
+.PHONY = all clean fclean re lib
 
 all: $(NAME)
 
 $(NAME): $(OBJ) $(P_LIB)libft.a
-	$(MAKE) -C $(P_LIB)
 	$(CC) $(FLAGS) $(OBJ) -Llibft -lft -o $(NAME)
 
 $(P_OBJ)%.o: $(P_SRC)%.c Makefile $(HEADERS) | $(P_OBJ)
@@ -25,8 +24,7 @@ $(P_OBJ)%.o: $(P_SRC)%.c Makefile $(HEADERS) | $(P_OBJ)
 $(P_OBJ):
 	mkdir -p $(P_OBJ)
 
-$(P_LIB)libft.a:
-	$(MAKE) -C $(P_LIB)
+$(P_LIB)libft.a: lib
 
 clean:
 	$(MAKE) clean -C $(P_LIB)
@@ -37,6 +35,9 @@ fclean: clean
 	rm -f $(NAME)
 
 re: clean all
+
+lib:
+	$(MAKE) -C $(P_LIB)
 
 # DEBUG
 

@@ -6,7 +6,7 @@
 /*   By: kbarru <kbarru@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 13:27:11 by kbarru            #+#    #+#             */
-/*   Updated: 2024/11/20 10:56:27 by kbarru           ###   ########lyon.fr   */
+/*   Updated: 2025/02/05 13:10:49 by kbarru           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,6 @@
 int	ft_isnumber(char c)
 {
 	return (c >= '0' && c <= '9');
-}
-
-static int	ft_issign(char c)
-{
-	return (c == '-' || c == '+');
 }
 
 static int	ft_iswhitespace(char c)

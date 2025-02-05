@@ -6,7 +6,7 @@
 /*   By: kbarru <kbarru@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 13:37:37 by kbarru            #+#    #+#             */
-/*   Updated: 2025/02/05 11:30:17 by kbarru           ###   ########lyon.fr   */
+/*   Updated: 2025/02/05 13:24:35 by kbarru           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,9 @@ int	ft_is_number(char *nbr)
 	size_t	i;
 
 	i = 0;
-	if (nbr[i] == '-' || nbr[i] == '+')
+	if (!nbr || !(nbr[0]))
+		return (1);
+	if (ft_issign(nbr[0]))
 		++i;
 	while (nbr[i])
 	{
@@ -100,7 +102,7 @@ int	ft_is_number(char *nbr)
 			return (0);
 		++i;
 	}
-	return (1);
+	return (!(i == 0) && !(ft_issign(nbr[0]) && i == 1));
 }
 
 /*
@@ -112,7 +114,7 @@ void	check_input(char **input, char **argv)
 	size_t	i;
 
 	i = -1;
-	if (!input)
+	if (!input || !(*input))
 		ft_clean_exit(NULL, NULL, input, argv);
 	while (input[++i])
 		if (!ft_is_number(input[i]))
