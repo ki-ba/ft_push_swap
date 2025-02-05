@@ -39,8 +39,7 @@ $(P_OBJ):
 
 
 clean:
-	rm -f $(OBJ) $(OBJBONUS)
-	rmdir $(P_OBJ)
+	rm -f $(OBJ)
 
 fclean: clean
 	rm -f $(NAME)
