@@ -6,7 +6,7 @@
 /*   By: kbarru <kbarru@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 17:19:36 by kbarru            #+#    #+#             */
-/*   Updated: 2025/02/04 13:08:55 by kbarru           ###   ########lyon.fr   */
+/*   Updated: 2025/02/05 11:31:00 by kbarru           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int	main(int argc, char **argv)
 	ft_stack_iter(&stack_a, ft_simplify_node);
 	ft_clean_input(input, argv);
 	success = ft_radix_sort(&stack_a, &stack_b);
+	ft_print_stack(&stack_a);
 	ft_clearstack(&stack_a);
 	ft_clearstack(&stack_b);
 	return (!success);

@@ -6,7 +6,7 @@
 /*   By: kbarru <kbarru@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 13:37:37 by kbarru            #+#    #+#             */
-/*   Updated: 2025/02/04 13:23:37 by kbarru           ###   ########lyon.fr   */
+/*   Updated: 2025/02/05 11:30:17 by kbarru           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ void	check_input(char **input, char **argv)
 {
 	size_t	i;
 
-	i = 0;
+	i = -1;
 	if (!input)
 		ft_clean_exit(NULL, NULL, input, argv);
 	while (input[++i])
