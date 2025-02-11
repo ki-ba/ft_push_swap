@@ -37,7 +37,6 @@ $(P_OBJ)%.o: %.c libft.h | $(P_OBJ)
 $(P_OBJ):
 	mkdir $(P_OBJ)
 
-
 clean:
 	rm -f $(OBJ)
 

@@ -13,7 +13,7 @@ OBJ = $(addprefix $(P_OBJ), $(SRC:%.c=%.o))
 
 .PHONY = all clean fclean re lib
 
-all: $(NAME)
+all: lib $(NAME)
 
 $(NAME): $(OBJ) $(P_LIB)libft.a
 	$(CC) $(FLAGS) $(OBJ) -Llibft -lft -o $(NAME)
@@ -24,7 +24,8 @@ $(P_OBJ)%.o: $(P_SRC)%.c Makefile $(HEADERS) | $(P_OBJ)
 $(P_OBJ):
 	mkdir -p $(P_OBJ)
 
-$(P_LIB)libft.a: lib
+lib:
+	$(MAKE) -C $(P_LIB)
 
 clean:
 	$(MAKE) clean -C $(P_LIB)
@@ -36,8 +37,6 @@ fclean: clean
 
 re: clean all
 
-lib:
-	$(MAKE) -C $(P_LIB)
 
 # DEBUG
 
