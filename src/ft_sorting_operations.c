@@ -6,7 +6,7 @@
 /*   By: kbarru <kbarru@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 10:26:48 by kbarru            #+#    #+#             */
-/*   Updated: 2025/01/29 14:27:10 by kbarru           ###   ########lyon.fr   */
+/*   Updated: 2025/03/13 17:31:33 by kbarru           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,34 @@ void	ft_rotate_stack(t_stack **head, char stack_id)
 	(*head)->next = NULL;
 	*head = second_element;
 	ft_printf("r%c\n", stack_id);
+}
+
+void	ft_rev_rotate_stack(t_stack **head, char stack_id)
+{
+	t_stack	*last_element;
+	t_stack	*second_to_last;
+
+	if (!(*head) || ft_stack_size(*head) < 2)
+		return ;
+	last_element = lst_last(*head);
+	second_to_last = ft_second_to_last(head);
+	last_element->next = (*head);
+	second_to_last->next = NULL;
+	*head = last_element;
+	ft_printf("rr%c\n", stack_id);
+}
+
+void	ft_swap_stack(t_stack **head, char stack_id)
+{
+	t_stack	*second_element;
+
+	if (!head || ft_stack_size(*head) < 2)
+		return ;
+	second_element = (*head)->next;
+	if (!second_element)
+		return ;
+	(*head)->next = second_element->next;
+	second_element->next = *head;
+	*head = second_element;
+	ft_printf("s%c\n", stack_id);
 }

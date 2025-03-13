@@ -6,7 +6,7 @@
 /*   By: kbarru <kbarru@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 17:00:10 by kbarru            #+#    #+#             */
-/*   Updated: 2025/01/29 18:20:04 by kbarru           ###   ########lyon.fr   */
+/*   Updated: 2025/03/13 17:31:59 by kbarru           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,11 @@ t_stack	*ft_second_to_last(t_stack **stack)
 	@debugging function. Used to print a stack.
 	@param head the stack to print.
 */
-void	ft_print_stack(t_stack **head)
+void	ft_print_stack(t_stack **head, char stack_id)
 {
 	t_stack	*current;
 
+	ft_printf("%c : ", stack_id);
 	if (!head || !(*head))
 	{
 		ft_printf("[EMPTY STACK]\n");
@@ -65,6 +66,25 @@ void	ft_print_stack(t_stack **head)
 	while (current)
 	{
 		ft_printf("%d -> ", (current->value));
+		current = (current->next);
+	}
+	ft_printf("NULL\n");
+}
+
+void	ft_print_simpl_stack(t_stack **head, char stack_id)
+{
+	t_stack	*current;
+
+	ft_printf("%c : ", stack_id);
+	if (!head || !(*head))
+	{
+		ft_printf("[EMPTY STACK]\n");
+		return ;
+	}
+	current = *head;
+	while (current)
+	{
+		ft_printf("%d -> ", (current->simpl_val));
 		current = (current->next);
 	}
 	ft_printf("NULL\n");

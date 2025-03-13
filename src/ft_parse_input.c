@@ -6,7 +6,7 @@
 /*   By: kbarru <kbarru@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 13:37:37 by kbarru            #+#    #+#             */
-/*   Updated: 2025/02/18 11:55:18 by kbarru           ###   ########lyon.fr   */
+/*   Updated: 2025/03/13 09:19:19 by kbarru           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 void	ft_clean_exit(t_stack **stack_a, t_stack **stack_b, char **input,
 		char **argv)
 {
-	ft_printf("Error\n");
+	ft_putstr_fd("Error\n", 2);
 	ft_clean_input(input, argv);
 	ft_clearstack(stack_a);
 	ft_clearstack(stack_b);

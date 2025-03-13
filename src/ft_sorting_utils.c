@@ -6,7 +6,7 @@
 /*   By: kbarru <kbarru@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 17:53:37 by kbarru            #+#    #+#             */
-/*   Updated: 2025/02/02 12:37:44 by kbarru           ###   ########lyon.fr   */
+/*   Updated: 2025/03/13 09:35:10 by kbarru           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ t_stack	*get_node_by_index(t_stack *stack, int index)
 }
 
 /*
-	@brief returns the index of the node given as parameter.
+	@brief returns the 0-index of the node given as parameter.
 	@param stack the stack to look in.
 	@param node the node to look for.
 	@returns the index of `node` in `stack`.

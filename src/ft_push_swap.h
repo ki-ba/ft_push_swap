@@ -6,7 +6,7 @@
 /*   By: kbarru <kbarru@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 17:00:25 by kbarru            #+#    #+#             */
-/*   Updated: 2025/02/04 13:23:20 by kbarru           ###   ########lyon.fr   */
+/*   Updated: 2025/03/13 17:32:25 by kbarru           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ int					ft_simplify_node(t_stack **stack, t_stack *node);
 void				ft_push_stack(t_stack **head_from, t_stack **head_to,
 						char stack_id);
 void				ft_rotate_stack(t_stack **head, char stack_id);
+void				ft_rev_rotate_stack(t_stack **head, char stack_id);
+void				ft_swap_stack(t_stack **head, char stack_id);
 
 // SORTING_UTILS.C
 int					get_highest_number_index(t_stack *stack);
@@ -67,12 +69,13 @@ t_stack				*get_node_by_index(t_stack *stack, int index);
 int					get_node_index(t_stack *stack, t_stack *node);
 t_stack				*get_node_by_value(t_stack *stack, int number);
 int					is_sorted(t_stack **stack);
+void				ft_print_simpl_stack(t_stack **head, char stack_id);
 
 // STACK UTILS
 
 t_stack				*lst_last(t_stack *stack);
 t_stack				*ft_second_to_last(t_stack **stack);
-void				ft_print_stack(t_stack **head);
+void				ft_print_stack(t_stack **head, char stack_id);
 int					ft_stack_size(t_stack *stack);
 
 // STACK
@@ -83,4 +86,9 @@ t_stack				*ft_stack_last(t_stack **stack);
 void				ft_stack_add_front(t_stack **stack, t_stack *new);
 void				ft_stack_add_back(t_stack **stack, t_stack *new);
 
+// DUMB_SORT
+int					sort_two(t_stack **stack, char stack_id);
+int					sort_three(t_stack **stack, char stack_id);
+int					dumb_sort(t_stack **stack_a, t_stack **stack_b);
+void				ft_put_on_top(t_stack **stack, int i, char stack_id);
 #endif
