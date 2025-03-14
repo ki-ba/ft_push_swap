@@ -6,7 +6,7 @@ P_LIB = libft/
 P_OBJ = .obj/
 P_SRC = src/
 HEADERS = $(P_SRC)ft_push_swap.h
-SRC = ft_dumb_sort.c ft_stack_utils.c ft_push_swap.c ft_sorting_utils.c ft_sorting_operations.c \
+SRC = ft_small_sort.c ft_dumb_sort.c ft_stack_utils.c ft_push_swap.c ft_sorting_utils.c ft_sorting_operations.c \
 ft_parse_input.c ft_radix_sort.c ft_stack.c ft_simplify_stack.c
 
 OBJ = $(addprefix $(P_OBJ), $(SRC:%.c=%.o))

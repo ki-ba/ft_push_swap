@@ -6,50 +6,11 @@
 /*   By: kbarru <kbarru@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 08:49:41 by kbarru            #+#    #+#             */
-/*   Updated: 2025/03/13 17:37:48 by kbarru           ###   ########lyon.fr   */
+/*   Updated: 2025/03/14 12:03:29 by kbarru           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
-
-t_stack	*get_node_by_simpl_value(t_stack *stack, int number)
-{
-	t_stack	*current_node;
-
-	current_node = stack;
-	while (current_node)
-	{
-		if ((current_node->simpl_val) == number)
-			return (current_node);
-		current_node = current_node->next;
-	}
-	return (NULL);
-}
-
-int	sort_two(t_stack **stack, char stack_id)
-{
-	if (ft_stack_size(*stack) != 2)
-		return (1);
-	if (!is_sorted(stack))
-		ft_rotate_stack(stack, stack_id);
-	return (0);
-}
-
-int	sort_three(t_stack **stack, char stack_id)
-{
-	int	biggest_pos;
-
-	biggest_pos = get_highest_number_index(*stack);
-	if (ft_stack_size(*stack) != 3)
-		return (1);
-	if (biggest_pos == 0)
-		ft_rotate_stack(stack, stack_id);
-	else if (biggest_pos == 1)
-		ft_rev_rotate_stack(stack, stack_id);
-	if (!is_sorted(stack))
-		ft_swap_stack(stack, stack_id);
-	return (!is_sorted(stack));
-}
 
 int	get_lowest_number_index(t_stack *stack)
 {
@@ -78,16 +39,12 @@ void	ft_put_on_top(t_stack **stack, int val, char stack_id)
 	if (get_node_index(*stack, get_node_by_value(*stack, val)) >= size - 2)
 	{
 		while ((*stack)->simpl_val != val)
-		{
 			ft_rev_rotate_stack(stack, stack_id);
-		}
 	}
 	else
 	{
 		while ((*stack)->simpl_val != val)
-		{
 			ft_rotate_stack(stack, stack_id);
-		}
 	}
 }
 
