@@ -6,7 +6,7 @@
 /*   By: kbarru <kbarru@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 08:49:41 by kbarru            #+#    #+#             */
-/*   Updated: 2025/03/14 12:03:29 by kbarru           ###   ########lyon.fr   */
+/*   Updated: 2025/03/19 12:50:27 by kbarru           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	dumb_sort(t_stack **stack_a, t_stack **stack_b)
 	int	initial_stack_size;
 
 	if (is_sorted(stack_a))
-		return (0);
+		return (1);
 	initial_stack_size = ft_stack_size(*stack_a);
 	if (initial_stack_size == 2)
 		return (sort_two(stack_a, 'a'));
@@ -81,5 +81,5 @@ int	dumb_sort(t_stack **stack_a, t_stack **stack_b)
 		ft_push_stack(stack_b, stack_a, 'a');
 		return (is_sorted(stack_a));
 	}
-	return (1);
+	return (is_sorted(stack_a));
 }
